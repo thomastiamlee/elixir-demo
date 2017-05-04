@@ -1,0 +1,16 @@
+{
+  "name": "elixir-demo-mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Thomas",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^16.1.1",
+    "mongoose": "^4.9.7",
+    "nunjucks": "^3.0.0"
+  }
+}

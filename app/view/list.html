@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Sample List of Activities Page</title>
+		<style>
+			div#main-div
+			{
+				width: 900px;
+				margin: 0 auto;
+			}
+			h1
+			{
+				font-family: Sans-serif;
+				font-size: 3em;
+			}
+			div.activity-panel
+			{
+				background-color: #BDFCD0;
+				width: 100%;
+				padding: 15px;
+				margin-top: 20px;
+			}
+			div.activity-panel h3, p {
+				font-family: Sans-serif;
+			}
+			a
+			{
+				text-decoration:none;
+				display: block;
+				font-family: Sans-serif;
+				background-color: #143FCC;
+				color: #FEFEFE;
+				font-weight: bold;
+				margin-top: 10px;
+				margin-left: auto;
+				padding: 10px;
+				width: 150px;
+				text-align: center;
+				cursor: pointer;
+			}
+			a:hover
+			{
+				background-color: #345FCC;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main-div">
+			<h1>Sample List of Activities Page</h1>
+			{% for activity in activities %}
+			<div class="activity-panel">
+				{{ activity.body }}
+				<p class="activity-id" style="display:none;">{{ activity._id }}</p>
+				<a class="delete">DELETE</a>
+			</div>
+			{% endfor %}
+			<a class="add" href="post">ADD POST</a>
+		</div>
+		<form id="form-hidden" style="display: none;" action="delete" method="POST">
+			<input id="input-id" type="text" name="id" />
+			<input type="submit">
+		</form>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+		<script>
+			$(document).ready(function() {
+				$("a.delete").click(function() {
+					var id = $(this).closest("div").find("p.activity-id").text();
+					$("#input-id").val(id);
+					$("#form-hidden").submit();
+				});
+			});
+		</script>
+	</body>
+</html>
+
