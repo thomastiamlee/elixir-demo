@@ -3,12 +3,12 @@
 MVC follows template by [Neil Capistrano](https://github.com/NeilMD)
 
 # Dependencies
-Hapi-JS (hapi)
-Mongoose (mongoose)
-Nunjucks (nunjucks)
+1. Hapi-JS (hapi)
+2. Mongoose (mongoose)
+3. Nunjucks (nunjucks)
 
 # Requirements
-You should have an instance of MongoDB running. Configuration for MongoDB connection can be found in config.js file.
+You should have an instance of MongoDB running. Configuration for MongoDB connection can be found in `config.js` file.
 
 # Features
 1. Page for list of activities
