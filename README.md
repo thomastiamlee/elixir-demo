@@ -12,7 +12,7 @@ You should have an instance of MongoDB running. Configuration for MongoDB connec
 
 # Features
 1. Page for list of activities
-2. Page for posting a new activities
+2. Page for posting a new activity
 3. Can save activities to database
 4. Can load activities from the database
 5. Can render data from controller to view
