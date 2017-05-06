@@ -1,4 +1,5 @@
 const activityController = require("./controller/activityController");
+const loginController = require("./controller/loginController");
 
 module.exports = [{
 		method: ["GET", "POST"],
@@ -20,6 +21,20 @@ module.exports = [{
 		handler: activityController.remove,
 		config: {
 			description: "URL for deleting activities"
+		}
+	}, {
+		method: ["POST", "GET"],
+		path: "/login",
+		handler: loginController.login,
+		config: {
+			description: "URL for logging in"
+		}
+	}, {
+		method: "GET",
+		path: "/logout",
+		handler: loginController.logout,
+		config: {
+			description: "URL for logging out"
 		}
 	}
 ];

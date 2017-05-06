@@ -3,13 +3,27 @@ const routes = require("./app/routes");
 const database = require("./database");
 
 var server = new Hapi.Server();
-server.connection({port: 3000, host: "localhost"});
-server.route(routes);
+server.connection({port: 3000});
 
-server.start((err) => {
-	if (err) {
-		throw err;
+var options = {
+	storeBlank: false,
+	cookieOptions: {
+		password: "this-is-a-temporary-password-and-must-be-replaced-and-not-hardcoded",
+		isSecure: false
 	}
-	console.log(`Server running at ${server.info.uri}.`);
+};
+
+server.register({
+	register: require("yar"),
+	options: options
+}, (err) => {
+	server.route(routes);
+	server.start((err) => {
+		if (err) {
+			throw err;
+		}
+		console.log(`Server running at ${server.info.uri}.`);
+	});
 });
+
 

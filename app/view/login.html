@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Sample Login Page</title>
+		<style>
+			div#main-div
+			{
+				width: 900px;
+				margin: 0 auto;
+			}
+			h1
+			{
+				font-family: Sans-serif;
+				font-size: 3em;
+			}
+			a
+			{
+				text-decoration:none;
+				display: block;
+				font-family: Sans-serif;
+				background-color: #143FCC;
+				color: #FEFEFE;
+				font-weight: bold;
+				margin-top: 10px;
+				margin-right: auto;
+				padding: 10px;
+				width: 150px;
+				text-align: center;
+				cursor: pointer;
+			}
+			a:hover
+			{
+				background-color: #345FCC;
+			}
+			form#login-form div
+			{
+				width: 100%;
+			}
+			form#login-form label
+			{
+				font-family: Sans-serif;
+				margin: 5px;
+				display: inline-block;
+				width: 150px;
+			}
+			p.error
+			{
+				font-family: Sans-serif;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main-div">
+			<h1>Sample Login Page</h1>
+			{% if errorMessage %}
+				<p class="error">{{errorMessage}}</p>
+			{% endif %}
+			<form id="login-form" action="login" method="POST">
+				<div>
+					<label for="userid">User ID</label><input type="text" name="userid">
+				</div>
+				<div>
+					<label for="password">Password</label><input type="password" name="password">
+				</div>
+				<a id="submit">LOGIN</a>
+			</form>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+		<script>
+			$(document).ready(function() {
+				$("a#submit").click(function() {
+					$("form#login-form").submit();
+				});
+			});
+		</script>
+	</body>
+</html>
+

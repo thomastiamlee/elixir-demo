@@ -5,8 +5,11 @@ const activityModel = require("../model/activityModel");
 
 module.exports = {
 	post: (request, reply) => {
-		if (request.payload == null || request.payload.content == undefined) {
-			reply(nunjucks.render("post.html"));
+		if (request.yar.get("userid") == null) {
+			reply.redirect("../login");
+		}
+		else if (request.payload == null || request.payload.content == undefined) {
+			reply(nunjucks.render("post.html", {userid: request.yar.get("userid")}));
 		}
 		else {
 			var body = request.payload.content;
@@ -16,15 +19,23 @@ module.exports = {
 		}
 	},
 	list: (request, reply) => {
-		var activities = activityModel.Activity.find((err, activities) => {
-			if (err) {
-				throw err;
-			}
-			reply(nunjucks.render("list.html", {activities: activities}));
-		});
+		if (request.yar.get("userid") == null) {
+			reply.redirect("../login");
+		}
+		else {
+			var activities = activityModel.Activity.find((err, activities) => {
+				if (err) {
+					throw err;
+				}
+				reply(nunjucks.render("list.html", {activities: activities, userid: request.yar.get("userid")}));
+			});
+		}
 	},
 	remove: (request, reply) => {
-		if (request.payload == null || request.payload.id == undefined) {
+		if (request.yar.get("userid") == null) {
+			reply.redirect("../login");
+		}
+		else if (request.payload == null || request.payload.id == undefined) {
 			reply.redirect("list");
 		}
 		else {

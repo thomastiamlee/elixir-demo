@@ -23,7 +23,7 @@
 			div.activity-panel h3, p {
 				font-family: Sans-serif;
 			}
-			a
+			a.add, a.delete
 			{
 				text-decoration:none;
 				display: block;
@@ -38,14 +38,19 @@
 				text-align: center;
 				cursor: pointer;
 			}
-			a:hover
+			a.add:hover, a.delete:hover
 			{
 				background-color: #345FCC;
+			}
+			p.userid
+			{	
+				font-family: Sans-serif;
 			}
 		</style>
 	</head>
 	<body>
 		<div id="main-div">
+			<p class="userid">Hello, {{userid}}! <a href="../logout">Logout</a></p>
 			<h1>Sample List of Activities Page</h1>
 			{% for activity in activities %}
 			<div class="activity-panel">
